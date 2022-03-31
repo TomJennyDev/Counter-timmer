@@ -28,7 +28,7 @@ function App() {
             <i className="fa-solid fa-stop"></i>
           </button>
           <button className="button" ref={active} onClick={startTimer}>
-            <i class="fa-solid fa-play"></i>
+            <i className="fa-solid fa-play"></i>
           </button>
           <button className="button" onClick={resetTimer}>
             <i className="fa-solid fa-arrow-rotate-right"></i>
@@ -39,7 +39,7 @@ function App() {
         </div>
       </div>
       <div className="split__wrapper timer__wrapper ">
-        <SplitTime splitTimeList={splitTimeList} />
+        <SplitTime splitTimeList={splitTimeList.current} />
       </div>
     </div>
   );

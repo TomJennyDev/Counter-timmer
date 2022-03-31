@@ -1,5 +1,5 @@
 import React from "react";
-import { formatTime } from "../utils/utils";
+import { calculateLapTime, formatTime } from "../utils/utils";
 
 function SplitTime({ splitTimeList }) {
   return (
@@ -8,20 +8,24 @@ function SplitTime({ splitTimeList }) {
         <div className="table">
           <div className="tab-head">
             <div>Laps</div>
-            <div>Time</div>
+            <div>Lap Time</div>
+            <div>Total Time</div>
           </div>
           <div className="tab-body" id="tab-body">
-            {splitTimeList?.map((item, index) => {
-              return (
-                <div
-                  key={index}
-                  className={`tab-row ${index % 2 ? "hightlight" : ""}`}
-                >
-                  <div>{index + 1}</div>
-                  <div>{formatTime(item)}</div>
-                </div>
-              );
-            })}
+            {calculateLapTime(splitTimeList)
+              ?.reverse()
+              .map((item, index) => {
+                return (
+                  <div
+                    key={index}
+                    className={`tab-row ${index % 2 ? "hightlight" : ""}`}
+                  >
+                    <div>{splitTimeList.length - index}</div>
+                    <div>{formatTime(item.lapTime)}</div>
+                    <div>{formatTime(item.totalTime)}</div>
+                  </div>
+                );
+              })}
           </div>
         </div>
       ) : null}

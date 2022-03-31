@@ -2,7 +2,7 @@ import { useRef, useState } from "react";
 
 const useTimer = (ini = 0) => {
   const [time, setTime] = useState(ini);
-  const [splitTimeList, setSplitTimeList] = useState([]);
+  const splitTimeList = useRef([]);
 
   const refInterval = useRef(0);
   const active = useRef();
@@ -29,7 +29,7 @@ const useTimer = (ini = 0) => {
 
   const resetTimer = () => {
     setTime(0);
-    setSplitTimeList([]);
+    splitTimeList.current = [];
 
     clearInterval(refInterval.current);
     refInterval.current = null;
@@ -39,8 +39,8 @@ const useTimer = (ini = 0) => {
   };
 
   const splitTimer = () => {
-    if (time >= 1) {
-      setSplitTimeList([...splitTimeList, time]);
+    if (time >= 1 && refInterval.current) {
+      splitTimeList.current = [...splitTimeList.current, time];
     }
   };
 
