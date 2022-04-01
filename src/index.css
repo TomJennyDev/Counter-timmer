@@ -137,11 +137,11 @@ p {
   height: 80%;
 }
 .table .tab-head {
-  padding: 5px 0;
+  padding: 15px 0;
   border-bottom: 3px solid rgba(255, 255, 255);
 }
 .table .tab-head > div {
-  font-size: 1.2em;
+  font-size: 1.8em;
 }
 
 .table .tab-head > div,
